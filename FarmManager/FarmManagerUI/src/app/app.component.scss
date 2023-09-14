@@ -1,0 +1,31 @@
+.page-container {
+    margin: 50px;
+
+    .add-animal-area {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+
+        .button-add {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            margin-left: 20px;
+        }
+    }
+
+    .list {
+        text-align: center;
+
+        .animal {
+            display: flex;
+            justify-content: space-between;
+            background: #eee;
+            margin-top: 10px;
+
+            pre {
+                margin: 0;
+            }
+        }
+    }
+}

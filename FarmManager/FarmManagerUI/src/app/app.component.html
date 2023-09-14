@@ -1,0 +1,36 @@
+<div class="page-container">
+    <div class="add-animal-area">
+        <form [formGroup]="newAnimalForm">
+            <mat-form-field>
+                <input matInput placeholder="Enter Animal Name" formControlName="newAnimalName" required
+                    (keyup)="onAnimalNameKeyUp($event)" />
+                <mat-error
+                    *ngIf="newAnimalForm.controls['newAnimalName'].hasError('required') || newAnimalForm.controls['newAnimalName'].hasError('pattern')">
+                    Animal name is required
+                </mat-error>
+                <mat-error *ngIf="newAnimalForm.controls['newAnimalName'].hasError('notunique')">
+                    Animal with the same name already exists
+                </mat-error>
+            </mat-form-field>
+        </form>
+        <div class="button-add">
+            <button class="mat-raised-button" (click)="addAnimal()">Add</button>
+        </div>
+    </div>
+    <div class="list">
+        <mat-label>
+            <ng-container *ngIf="animals.length">
+                Animals:
+            </ng-container>
+            <ng-container *ngIf="!animals.length">
+                There are no animals
+            </ng-container>
+        </mat-label>
+        <div *ngFor="let animal of animals" class="animal">
+            <span>
+                <pre>{{animal.name}}</pre>
+            </span>
+            <button class="mat-raised-button" (click)="deleteAnimal(animal.name)">Remove</button>
+        </div>
+    </div>
+</div>
